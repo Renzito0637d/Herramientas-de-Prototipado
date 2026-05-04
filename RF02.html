@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RF02 - Mantenimiento de Promociones y Cupones</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body { font-family: system-ui, -apple-system, sans-serif; }
+    </style>
+  </head>
+  <body class="bg-gray-100 p-8 text-gray-900">
+    
+    <div class="max-w-6xl mx-auto space-y-12">
+      
+      <!-- SECCIÓN: PROMOCIONES Y CUPONES -->
+      <section>
+        <!-- Cabecera y Controles -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+          <div>
+            <h2 class="text-2xl font-bold text-black">Promociones y Cupones</h2>
+            <p class="text-sm text-gray-500">Gestión de campañas de descuento, vigencia y reglas de aplicación.</p>
+          </div>
+          <div class="flex items-center space-x-4 mt-4 md:mt-0">
+            <input type="text" placeholder="Buscar código o campaña..." class="border border-gray-400 bg-white px-4 py-2 rounded-md text-sm w-64 focus:outline-none focus:border-black focus:ring-1 focus:ring-black">
+            <button class="bg-black text-white px-4 py-2 rounded-md text-sm font-medium flex items-center hover:bg-gray-800 transition">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+              Nueva Campaña
+            </button>
+          </div>
+        </div>
+
+        <!-- Tabla Promociones -->
+        <div class="bg-white border border-gray-300 rounded-lg overflow-hidden shadow-sm">
+          <table class="w-full text-left border-collapse">
+            <thead class="bg-gray-200 border-b border-gray-300">
+              <tr>
+                <th class="p-4 text-sm font-semibold text-gray-700">ID</th>
+                <th class="p-4 text-sm font-semibold text-gray-700">Nombre de Campaña</th>
+                <th class="p-4 text-sm font-semibold text-gray-700">Código</th>
+                <th class="p-4 text-sm font-semibold text-gray-700">Descuento</th>
+                <th class="p-4 text-sm font-semibold text-gray-700">Vigencia</th>
+                <th class="p-4 text-sm font-semibold text-gray-700 text-center">Estado</th>
+                <th class="p-4 text-sm font-semibold text-gray-700 text-center">Acciones</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              
+              <!-- Fila 1 -->
+              <tr class="hover:bg-gray-50">
+                <td class="p-4 text-sm text-gray-600">001</td>
+                <td class="p-4 text-sm font-medium text-black">Cyber Days Adidas</td>
+                <td class="p-4 text-sm text-gray-600 font-mono">CYBER26</td>
+                <td class="p-4 text-sm text-gray-600">-30% (Todo el catálogo)</td>
+                <td class="p-4 text-sm text-gray-600">01/05/2026 <br> <span class="text-gray-400 text-xs">al 05/05/2026</span></td>
+                <td class="p-4 text-center">
+                  <span class="px-2 py-1 bg-black border border-black text-xs font-bold text-white rounded">ACTIVO</span>
+                </td>
+                <td class="p-4 flex justify-center space-x-3 text-gray-500">
+                  <button class="hover:text-black" title="Editar"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg></button>
+                  <button class="hover:text-black" title="Eliminar"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button>
+                </td>
+              </tr>
+
+              <!-- Fila 2 -->
+              <tr class="hover:bg-gray-50">
+                <td class="p-4 text-sm text-gray-600">002</td>
+                <td class="p-4 text-sm font-medium text-black">Bienvenida Nuevos Usuarios</td>
+                <td class="p-4 text-sm text-gray-600 font-mono">NUEVO10</td>
+                <td class="p-4 text-sm text-gray-600">-10% (Primera compra)</td>
+                <td class="p-4 text-sm text-gray-600">Permanente</td>
+                <td class="p-4 text-center">
+                  <span class="px-2 py-1 bg-black border border-black text-xs font-bold text-white rounded">ACTIVO</span>
+                </td>
+                <td class="p-4 flex justify-center space-x-3 text-gray-500">
+                  <button class="hover:text-black" title="Editar"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg></button>
+                  <button class="hover:text-black" title="Eliminar"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button>
+                </td>
+              </tr>
+
+              <!-- Fila 3 -->
+              <tr class="hover:bg-gray-50">
+                <td class="p-4 text-sm text-gray-600">003</td>
+                <td class="p-4 text-sm font-medium text-black">Liquidación Verano</td>
+                <td class="p-4 text-sm text-gray-600 font-mono">VERANO50</td>
+                <td class="p-4 text-sm text-gray-600">-50% (Categoría Outlet)</td>
+                <td class="p-4 text-sm text-gray-600">15/03/2026 <br> <span class="text-gray-400 text-xs">al 31/03/2026</span></td>
+                <td class="p-4 text-center">
+                  <span class="px-2 py-1 bg-gray-100 border border-gray-300 text-xs font-bold text-gray-400 rounded">FINALIZADO</span>
+                </td>
+                <td class="p-4 flex justify-center space-x-3 text-gray-500">
+                  <button class="hover:text-black" title="Editar"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg></button>
+                  <button class="hover:text-black" title="Eliminar"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button>
+                </td>
+              </tr>
+
+              <!-- Fila 4 -->
+              <tr class="hover:bg-gray-50">
+                <td class="p-4 text-sm text-gray-600">004</td>
+                <td class="p-4 text-sm font-medium text-black">Envío Gratis Lima</td>
+                <td class="p-4 text-sm text-gray-600 font-mono">FREELIMA</td>
+                <td class="p-4 text-sm text-gray-600">Envío S/0 (Solo Lima)</td>
+                <td class="p-4 text-sm text-gray-600">01/05/2026 <br> <span class="text-gray-400 text-xs">al 31/05/2026</span></td>
+                <td class="p-4 text-center">
+                  <span class="px-2 py-1 bg-black border border-black text-xs font-bold text-white rounded">ACTIVO</span>
+                </td>
+                <td class="p-4 flex justify-center space-x-3 text-gray-500">
+                  <button class="hover:text-black" title="Editar"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg></button>
+                  <button class="hover:text-black" title="Eliminar"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+          
+          <!-- Paginación -->
+          <div class="bg-gray-50 border-t border-gray-300 p-4 flex items-center justify-between">
+            <span class="text-sm text-gray-500">Mostrando 4 resultados (Página 1 de 1)</span>
+            <div class="space-x-2">
+              <button class="px-3 py-1 border border-gray-300 bg-white rounded text-sm text-gray-400 cursor-not-allowed">Anterior</button>
+              <button class="px-3 py-1 border border-gray-300 bg-white rounded text-sm text-gray-400 cursor-not-allowed">Siguiente</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </body>
+</html>
