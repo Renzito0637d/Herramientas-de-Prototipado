@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RF19 - Consulta de Rastreo (Tracking)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        
+        /* Estilos personalizados para la línea de tiempo */
+        .timeline-container {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 0.5rem;
+            top: 0.5rem;
+            bottom: 0;
+            width: 2px;
+            background-color: #e5e7eb; /* border-gray-200 */
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+        
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+        
+        /* Ocultar la línea después del último elemento */
+        .timeline-item:last-child::after {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 1rem;
+            bottom: 0;
+            width: 2px;
+            background-color: white; /* Cubre la línea gris sobrante */
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -1.875rem; /* Ajustado para alinear con la línea */
+            top: 0.25rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: white;
+            border: 2px solid #9ca3af; /* gray-400 por defecto */
+            z-index: 10;
+        }
+        
+        .timeline-dot.active {
+            background-color: black;
+            border-color: black;
+        }
+        
+        .timeline-dot.completed {
+            background-color: black;
+            border-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+
+    <!-- ================= NAVBAR ================= -->
+    <nav class="bg-black text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                
+                <!-- Hamburguesa (Móvil) & Logo -->
+                <div class="flex items-center">
+                    <button class="text-white hover:text-gray-300 md:hidden mr-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="font-bold text-xl tracking-widest">ADIDAS</span>
+                    </div>
+                </div>
+
+                <!-- Enlaces de Navegación PC -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">Inicio</a>
+                    <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">Catálogo</a>
+                    <a href="#" class="text-white border-b-2 border-white px-3 py-2 text-sm font-medium">Seguimiento</a>
+                </div>
+
+                <!-- Carrito, Perfil y Notificaciones -->
+                <div class="flex items-center space-x-4">
+                    <button class="text-white hover:text-gray-300 relative">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        <span class="absolute -top-1 -right-1 bg-white text-black text-[10px] font-bold px-1.5 py-0.5 rounded-full">3</span>
+                    </button>
+                    
+                    <div class="flex items-center space-x-2 cursor-pointer border-l border-gray-700 pl-4 ml-2">
+                        <div class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center text-xs font-bold border border-gray-600">
+                            L
+                        </div>
+                        <span class="text-sm font-medium hidden sm:block hover:underline">Luis Tello</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+    <!-- ================= FIN NAVBAR ================= -->
+
+    <div class="p-4 md:p-8">
+        <div class="max-w-3xl mx-auto space-y-6">
+
+            <!-- ================= SECCIÓN: BUSCADOR DE TRACKING ================= -->
+            <section class="bg-white border border-gray-300 rounded-xl p-6 shadow-sm text-center">
+                <h2 class="text-2xl font-bold text-black mb-2">Rastrea tu pedido</h2>
+                <p class="text-sm text-gray-500 mb-6">Ingresa el número de seguimiento enviado a tu correo o el ID de tu pedido.</p>
+                
+                <div class="flex flex-col sm:flex-row max-w-lg mx-auto gap-3">
+                    <input type="text" placeholder="Ej. OLV-993821 o PE-104958" value="OLV-993821"
+                        class="border border-gray-400 bg-gray-50 px-4 py-3 rounded-md text-sm flex-1 focus:outline-none focus:border-black focus:ring-1 focus:ring-black font-mono">
+                    <button class="bg-black text-white px-6 py-3 rounded-md text-sm font-bold flex items-center justify-center hover:bg-gray-800 transition whitespace-nowrap">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        Buscar
+                    </button>
+                </div>
+            </section>
+
+            <!-- ================= SECCIÓN: RESULTADO DEL RASTREO ================= -->
+            <section class="bg-white border border-gray-300 rounded-xl overflow-hidden shadow-sm">
+                
+                <!-- Resumen del Envío -->
+                <div class="bg-gray-50 p-5 md:p-6 border-b border-gray-200">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+                        <div>
+                            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Código de Rastreo</p>
+                            <h3 class="text-xl font-bold text-black font-mono">OLV-993821</h3>
+                            <p class="text-sm text-gray-600 mt-1">Pedido #PE-104958</p>
+                        </div>
+                        
+                        <div class="md:text-right">
+                            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Estado Actual</p>
+                            <span class="inline-flex items-center px-3 py-1 bg-black text-white text-xs font-bold rounded-full uppercase tracking-wide">
+                                <span class="w-2 h-2 rounded-full bg-green-400 mr-2 animate-pulse"></span>
+                                En Tránsito
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6 pt-4 border-t border-gray-200">
+                        <div>
+                            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Courier</p>
+                            <p class="text-sm font-medium text-black">Olva Courier</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Fecha Estimada</p>
+                            <p class="text-sm font-bold text-black">17 de Mayo, 2026</p>
+                        </div>
+                        <div class="col-span-2 md:col-span-1">
+                            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Destino</p>
+                            <p class="text-sm font-medium text-gray-700 truncate" title="San Martín de Porres, Lima">San Martín de Porres, Lima</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Línea de Tiempo (Timeline) -->
+                <div class="p-6 md:p-8">
+                    <h4 class="text-lg font-bold text-black mb-6">Historial de Movimientos</h4>
+                    
+                    <div class="timeline-container">
+                        <!-- Línea vertical base -->
+                        <div class="timeline-line"></div>
+                        
+                        <!-- Item 1: Estado Pendiente (Futuro) -->
+                        <div class="timeline-item opacity-50">
+                            <div class="timeline-dot"></div>
+                            <div>
+                                <h5 class="text-sm font-bold text-gray-500">Entregado</h5>
+                                <p class="text-xs text-gray-400 mt-1">El pedido será entregado en la dirección indicada.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 2: Estado Actual -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot active">
+                                <!-- Círculo interior palpitante para el estado actual -->
+                                <div class="absolute inset-0 m-auto w-1.5 h-1.5 bg-white rounded-full"></div>
+                            </div>
+                            <div>
+                                <h5 class="text-sm font-bold text-black">En Tránsito hacia el destino</h5>
+                                <p class="text-xs text-gray-600 mt-1">El paquete ha salido del centro de distribución y está en camino.</p>
+                                <span class="block text-xs font-mono text-gray-400 mt-1">16 May 2026 - 08:45 AM • Lima Norte</span>
+                            </div>
+                        </div>
+
+                        <!-- Item 3: Completado -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot completed">
+                                <!-- Check icon -->
+                                <svg class="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <h5 class="text-sm font-bold text-gray-800">Recibido por el Courier</h5>
+                                <p class="text-xs text-gray-600 mt-1">El paquete fue escaneado y recibido en la agencia de Olva Courier.</p>
+                                <span class="block text-xs font-mono text-gray-400 mt-1">15 May 2026 - 18:20 PM • Agencia Miraflores</span>
+                            </div>
+                        </div>
+
+                        <!-- Item 4: Completado -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot completed">
+                                <svg class="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <h5 class="text-sm font-bold text-gray-800">Preparado y Empaquetado</h5>
+                                <p class="text-xs text-gray-600 mt-1">El pedido ha sido empaquetado y está listo para recojo.</p>
+                                <span class="block text-xs font-mono text-gray-400 mt-1">15 May 2026 - 14:10 PM • Almacén Central</span>
+                            </div>
+                        </div>
+
+                        <!-- Item 5: Completado (Inicio) -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot completed">
+                                <svg class="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <h5 class="text-sm font-bold text-gray-800">Pedido Confirmado</h5>
+                                <p class="text-xs text-gray-600 mt-1">El pago fue procesado con éxito y la orden fue creada.</p>
+                                <span class="block text-xs font-mono text-gray-400 mt-1">15 May 2026 - 09:15 AM • Tienda Online</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+                <!-- Contacto Soporte -->
+                <div class="bg-gray-50 border-t border-gray-200 p-4 text-center">
+                    <p class="text-sm text-gray-600">
+                        ¿Tienes problemas con tu envío? 
+                        <a href="#" class="font-bold text-black hover:underline">Contactar Soporte</a>
+                    </p>
+                </div>
+
+            </section>
+
+        </div>
+    </div>
+</body>
+
+</html>

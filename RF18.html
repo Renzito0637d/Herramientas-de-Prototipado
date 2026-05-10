@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RF18 - Gestión de Estados de Envío</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+
+    <!-- ================= NAVBAR ================= -->
+    <nav class="bg-black text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                
+                <!-- Hamburguesa (Móvil) & Logo -->
+                <div class="flex items-center">
+                    <button class="text-white hover:text-gray-300 md:hidden mr-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="font-bold text-xl tracking-widest">ADIDAS<span class="text-gray-400 text-sm tracking-normal ml-2 hidden sm:inline">| Admin</span></span>
+                    </div>
+                </div>
+
+                <!-- Enlaces de Navegación PC -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">Inicio</a>
+                    <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">Productos</a>
+                    <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">Pedidos</a>
+                    <a href="#" class="text-white border-b-2 border-white px-3 py-2 text-sm font-medium">Logística</a>
+                </div>
+
+                <!-- Perfil y Notificaciones -->
+                <div class="flex items-center space-x-4">
+                    <button class="text-white hover:text-gray-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+    <!-- ================= FIN NAVBAR ================= -->
+
+    <div class="p-4 md:p-8">
+        <div class="max-w-5xl mx-auto space-y-6">
+
+            <!-- SECCIÓN: CABECERA Y FILTROS -->
+            <section>
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-black">Gestión de Envíos</h2>
+                        <p class="text-sm text-gray-500">Controla y actualiza el estado logístico de los pedidos.</p>
+                    </div>
+                    
+                    <!-- Controles apilados en móvil, en fila en PC -->
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                        <select class="border border-gray-400 bg-white px-4 py-2 rounded-md text-sm focus:outline-none focus:border-black">
+                            <option>Courier: Todos</option>
+                            <option>Olva Courier</option>
+                            <option>Motorizado Propio</option>
+                            <option>Urbano</option>
+                        </select>
+                        <select class="border border-gray-400 bg-white px-4 py-2 rounded-md text-sm focus:outline-none focus:border-black">
+                            <option>Estado: Todos</option>
+                            <option>Preparando</option>
+                            <option>En Camino</option>
+                            <option>Entregado</option>
+                            <option>Con Incidencias</option>
+                        </select>
+                        <input type="text" placeholder="Buscar ID o Tracking..."
+                            class="border border-gray-400 bg-white px-4 py-2 rounded-md text-sm w-full sm:w-64 focus:outline-none focus:border-black focus:ring-1 focus:ring-black">
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: LISTA DE ENVÍOS (Formato Tarjetas para Móvil) -->
+            <section class="space-y-4">
+
+                <!-- Tarjeta 1: Preparando -->
+                <div class="bg-white border border-gray-300 rounded-lg p-5 shadow-sm flex flex-col gap-4">
+                    <!-- Info ID y Estado Actual -->
+                    <div class="flex flex-col sm:flex-row justify-between sm:items-start border-b border-gray-100 pb-3 gap-2">
+                        <div>
+                            <h3 class="font-bold text-black text-base">Pedido #PE-104959</h3>
+                            <p class="text-xs text-gray-500 mt-1">Cliente: <span class="font-medium text-gray-700">Andrea Rojas</span> • Surco, Lima</p>
+                            <p class="text-xs text-gray-400">Fecha de compra: 16 de Mayo, 2026 - 14:30 hrs</p>
+                        </div>
+                        <span class="self-start px-2 py-1 bg-white border border-black text-[10px] font-bold text-black rounded uppercase tracking-wider">
+                            PREPARANDO ALMACÉN
+                        </span>
+                    </div>
+
+                    <!-- Detalles Logísticos -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div>
+                            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Courier Asignado</p>
+                            <p class="text-sm font-medium text-black">Motorizado Propio</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Código Tracking</p>
+                            <p class="text-sm font-medium text-gray-400 italic">Pendiente de generar</p>
+                        </div>
+                        <div class="col-span-2 md:col-span-2">
+                            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Dirección de Entrega</p>
+                            <p class="text-sm text-gray-700 truncate" title="Av. Benavides 4560, Dpto 201, Surco">Av. Benavides 4560, Dpto 201, Surco...</p>
+                        </div>
+                    </div>
+
+                    <!-- Controles de Actualización -->
+                    <div class="bg-gray-50 p-4 rounded border border-gray-200 mt-2 flex flex-col sm:flex-row gap-3 items-end">
+                        <div class="w-full sm:w-1/3">
+                            <label class="block text-xs font-bold text-gray-700 mb-1">Actualizar Estado</label>
+                            <select class="w-full border border-gray-400 bg-white px-3 py-2 rounded text-sm focus:outline-none focus:border-black">
+                                <option selected>Preparando Almacén</option>
+                                <option>En Camino</option>
+                                <option>Entregado</option>
+                                <option>Incidencia / Retraso</option>
+                            </select>
+                        </div>
+                        <div class="w-full sm:w-1/3">
+                            <label class="block text-xs font-bold text-gray-700 mb-1">Generar Tracking</label>
+                            <div class="flex">
+                                <input type="text" placeholder="Ej. MOT-1029" class="w-full border border-gray-400 bg-white px-3 py-2 rounded-l text-sm focus:outline-none focus:border-black">
+                                <button class="bg-gray-200 border border-gray-400 border-l-0 px-3 rounded-r hover:bg-gray-300 transition" title="Autogenerar">
+                                    <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button class="w-full sm:w-auto bg-black text-white px-6 py-2 rounded text-sm font-bold hover:bg-gray-800 transition ml-auto">
+                            Guardar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2: En Camino -->
+                <div class="bg-white border border-gray-300 rounded-lg p-5 shadow-sm flex flex-col gap-4">
+                    <div class="flex flex-col sm:flex-row justify-between sm:items-start border-b border-gray-100 pb-3 gap-2">
+                        <div>
+                            <h3 class="font-bold text-black text-base">Pedido #PE-104958</h3>
+                            <p class="text-xs text-gray-500 mt-1">Cliente: <span class="font-medium text-gray-700">Luis Tello</span> • San Martín de Porres, Lima</p>
+                            <p class="text-xs text-gray-400">Fecha de compra: 15 de Mayo, 2026 - 09:15 hrs</p>
+                        </div>
+                        <span class="self-start px-2 py-1 bg-gray-100 border border-gray-400 text-[10px] font-bold text-black rounded uppercase tracking-wider">
+                            EN CAMINO
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div>
+                            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Courier Asignado</p>
+                            <p class="text-sm font-medium text-black">Olva Courier</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Código Tracking</p>
+                            <a href="#" class="text-sm font-bold text-blue-600 hover:underline flex items-center">
+                                OLV-993821 
+                                <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                        </div>
+                        <div class="col-span-2 md:col-span-2">
+                            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Dirección de Entrega</p>
+                            <p class="text-sm text-gray-700 truncate" title="Av. Eduardo de Habich 123">Av. Eduardo de Habich 123</p>
+                        </div>
+                    </div>
+
+                    <!-- Barra de Progreso Simulada -->
+                    <div class="w-full bg-gray-200 rounded-full h-1.5 mt-2">
+                        <div class="bg-black h-1.5 rounded-full" style="width: 65%"></div>
+                    </div>
+                    <div class="flex justify-between text-[10px] font-bold text-gray-400 uppercase">
+                        <span>Preparado</span>
+                        <span class="text-black">En Tránsito</span>
+                        <span>Entregado</span>
+                    </div>
+
+                    <div class="bg-gray-50 p-4 rounded border border-gray-200 mt-2 flex flex-col sm:flex-row gap-3 items-end">
+                        <div class="w-full sm:w-1/3">
+                            <label class="block text-xs font-bold text-gray-700 mb-1">Actualizar Estado</label>
+                            <select class="w-full border border-gray-400 bg-white px-3 py-2 rounded text-sm focus:outline-none focus:border-black">
+                                <option>Preparando Almacén</option>
+                                <option selected>En Camino</option>
+                                <option>Entregado</option>
+                                <option>Incidencia / Retraso</option>
+                            </select>
+                        </div>
+                        <button class="w-full sm:w-auto bg-black text-white px-6 py-2 rounded text-sm font-bold hover:bg-gray-800 transition ml-auto">
+                            Guardar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3: Entregado -->
+                <div class="bg-white border border-gray-300 rounded-lg p-5 shadow-sm flex flex-col gap-4 opacity-80">
+                    <div class="flex flex-col sm:flex-row justify-between sm:items-start border-b border-gray-100 pb-3 gap-2">
+                        <div>
+                            <h3 class="font-bold text-black text-base">Pedido #PE-098234</h3>
+                            <p class="text-xs text-gray-500 mt-1">Cliente: <span class="font-medium text-gray-700">Carlos Mendoza</span> • Miraflores, Lima</p>
+                            <p class="text-xs text-gray-400">Fecha de compra: 02 de Mayo, 2026 - 10:05 hrs</p>
+                        </div>
+                        <span class="self-start px-2 py-1 bg-black border border-black text-[10px] font-bold text-white rounded uppercase tracking-wider flex items-center">
+                            <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            ENTREGADO
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div>
+                            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Courier Asignado</p>
+                            <p class="text-sm font-medium text-black">Urbano</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Código Tracking</p>
+                            <p class="text-sm font-medium text-gray-700">URB-442109</p>
+                        </div>
+                        <div class="col-span-2 md:col-span-2">
+                            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Fecha de Entrega</p>
+                            <p class="text-sm font-bold text-black">05 de Mayo, 2026 - 16:45 hrs</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-2 pt-4 border-t border-gray-100 flex justify-end">
+                        <button class="text-xs font-bold text-gray-500 hover:text-black transition flex items-center border border-gray-300 px-3 py-1.5 rounded">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            Ver Comprobante de Entrega
+                        </button>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Paginación -->
+            <div class="bg-gray-50 border border-gray-300 rounded-lg p-4 flex flex-col items-center justify-center space-y-3">
+                <span class="text-sm text-gray-500">Mostrando 3 de 45 envíos activos</span>
+                <div class="flex space-x-2">
+                    <button class="px-4 py-2 border border-gray-300 bg-white rounded text-sm text-gray-400 cursor-not-allowed">Anterior</button>
+                    <button class="px-4 py-2 border border-gray-300 bg-white rounded text-sm text-black hover:bg-gray-100">Siguiente</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

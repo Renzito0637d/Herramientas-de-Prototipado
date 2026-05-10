@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RF17 - Mantenimiento de Zonas de Envío</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+
+    <!-- ================= NAVBAR ================= -->
+    <nav class="bg-black text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                
+                <!-- Hamburguesa (Móvil) & Logo -->
+                <div class="flex items-center">
+                    <button class="text-white hover:text-gray-300 md:hidden mr-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="font-bold text-xl tracking-widest">ADIDAS<span class="text-gray-400 text-sm tracking-normal ml-2 hidden sm:inline">| Admin</span></span>
+                    </div>
+                </div>
+
+                <!-- Enlaces de Navegación PC -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">Inicio</a>
+                    <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">Productos</a>
+                    <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">Pedidos</a>
+                    <a href="#" class="text-white border-b-2 border-white px-3 py-2 text-sm font-medium">Logística</a>
+                </div>
+
+                <!-- Perfil y Notificaciones -->
+                <div class="flex items-center space-x-4">
+                    <button class="text-white hover:text-gray-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+    <!-- ================= FIN NAVBAR ================= -->
+
+    <div class="p-4 md:p-8">
+        <div class="max-w-6xl mx-auto space-y-6">
+
+            <!-- SECCIÓN: CABECERA Y CONTROLES -->
+            <section>
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-black">Zonas de Envío</h2>
+                        <p class="text-sm text-gray-500">Configura tarifas, tiempos de entrega y cobertura geográfica.</p>
+                    </div>
+                    
+                    <div class="flex items-center space-x-3">
+                        <input type="text" placeholder="Buscar distrito o zona..."
+                            class="border border-gray-400 bg-white px-4 py-2 rounded-md text-sm w-full sm:w-64 focus:outline-none focus:border-black focus:ring-1 focus:ring-black">
+                        <button class="bg-black text-white px-4 py-2 rounded-md text-sm font-bold flex items-center hover:bg-gray-800 transition whitespace-nowrap">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            Nueva Zona
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: LISTADO DE ZONAS (Cards adaptativas) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Tarjeta 1: Zona Lima Metropolitana Centro -->
+                <div class="bg-white border border-gray-300 rounded-xl overflow-hidden shadow-sm flex flex-col">
+                    <div class="p-5 border-b border-gray-100">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-black text-lg">Lima Metropolitana - Centro</h3>
+                            <span class="px-2 py-1 bg-black text-white text-[10px] font-bold rounded uppercase">Activo</span>
+                        </div>
+                        <p class="text-xs text-gray-500">Lima, Lince, Jesús María, Breña, Pueblo Libre, San Miguel, Magdalena.</p>
+                    </div>
+                    
+                    <div class="p-5 flex-1 bg-gray-50 flex flex-col gap-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Costo Estándar</span>
+                            <span class="text-sm font-bold text-black">S/ 10.00</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Envío Gratis Desde</span>
+                            <span class="text-sm font-bold text-green-600">S/ 150.00</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Tiempo Estimado</span>
+                            <span class="text-sm font-medium text-black">24 - 48 hrs</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 border-t border-gray-200">
+                        <button class="py-3 text-xs font-bold text-gray-600 border-r border-gray-200 hover:bg-gray-100 transition flex justify-center items-center">
+                            <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                            Editar
+                        </button>
+                        <button class="py-3 text-xs font-bold text-gray-600 hover:bg-gray-100 transition flex justify-center items-center">
+                            <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                            Eliminar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2: Zona Lima Metropolitana Norte -->
+                <div class="bg-white border border-gray-300 rounded-xl overflow-hidden shadow-sm flex flex-col">
+                    <div class="p-5 border-b border-gray-100">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-black text-lg">Lima Metropolitana - Norte</h3>
+                            <span class="px-2 py-1 bg-black text-white text-[10px] font-bold rounded uppercase">Activo</span>
+                        </div>
+                        <p class="text-xs text-gray-500">San Martín de Porres, Los Olivos, Independencia, Comas, Carabayllo.</p>
+                    </div>
+                    
+                    <div class="p-5 flex-1 bg-gray-50 flex flex-col gap-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Costo Estándar</span>
+                            <span class="text-sm font-bold text-black">S/ 12.00</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Envío Gratis Desde</span>
+                            <span class="text-sm font-bold text-green-600">S/ 180.00</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Tiempo Estimado</span>
+                            <span class="text-sm font-medium text-black">48 hrs</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 border-t border-gray-200">
+                        <button class="py-3 text-xs font-bold text-gray-600 border-r border-gray-200 hover:bg-gray-100 transition flex justify-center items-center">
+                            <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                            Editar
+                        </button>
+                        <button class="py-3 text-xs font-bold text-gray-600 hover:bg-gray-100 transition flex justify-center items-center">
+                            <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                            Eliminar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3: Provincias (Inactivo/Ejemplo) -->
+                <div class="bg-gray-50 border border-gray-200 rounded-xl overflow-hidden shadow-sm flex flex-col opacity-80">
+                    <div class="p-5 border-b border-gray-200">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-gray-500 text-lg">Provincias - Costa</h3>
+                            <span class="px-2 py-1 bg-gray-200 text-gray-600 text-[10px] font-bold rounded uppercase">Inactivo</span>
+                        </div>
+                        <p class="text-xs text-gray-400">Piura, Chiclayo, Trujillo, Chimbote, Ica, Arequipa, Tacna.</p>
+                    </div>
+                    
+                    <div class="p-5 flex-1 flex flex-col gap-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Costo Estándar</span>
+                            <span class="text-sm font-bold text-gray-500">S/ 25.00</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Envío Gratis Desde</span>
+                            <span class="text-sm font-bold text-gray-500">No aplica</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Tiempo Estimado</span>
+                            <span class="text-sm font-medium text-gray-500">3 - 5 días hábiles</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 border-t border-gray-200">
+                        <button class="py-3 text-xs font-bold text-gray-500 border-r border-gray-200 hover:text-black transition flex justify-center items-center">
+                            <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                            Editar
+                        </button>
+                        <button class="py-3 text-xs font-bold text-gray-500 hover:text-black transition flex justify-center items-center">
+                            <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                            Eliminar
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Paginación -->
+            <div class="bg-white border border-gray-300 rounded-lg p-4 flex flex-col items-center justify-center space-y-3 shadow-sm mt-6">
+                <span class="text-sm text-gray-500">Mostrando 3 de 8 zonas configuradas</span>
+                <div class="flex space-x-2">
+                    <button class="px-4 py-2 border border-gray-300 bg-gray-50 rounded text-sm text-gray-400 cursor-not-allowed">Anterior</button>
+                    <button class="px-4 py-2 border border-gray-300 bg-white rounded text-sm text-black hover:bg-gray-50 transition">Siguiente</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

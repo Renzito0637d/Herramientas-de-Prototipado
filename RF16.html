@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RF16 - Historial de Pedidos (Con Usuario)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        /* Simulación de imagen para el wireframe */
+        .wireframe-img {
+            background-image: repeating-linear-gradient(45deg, #f3f4f6 25%, transparent 25%, transparent 75%, #f3f4f6 75%, #f3f4f6), repeating-linear-gradient(45deg, #f3f4f6 25%, #fff 25%, #fff 75%, #f3f4f6 75%, #f3f4f6);
+            background-position: 0 0, 10px 10px;
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+
+    <!-- ================= NAVBAR ================= -->
+    <nav class="bg-black text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                
+                <!-- Hamburguesa (Móvil) & Logo -->
+                <div class="flex items-center">
+                    <button class="text-white hover:text-gray-300 md:hidden mr-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="font-bold text-xl tracking-widest">ADIDAS</span>
+                    </div>
+                </div>
+
+                <!-- Enlaces de Navegación PC -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">Inicio</a>
+                    <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">Catálogo</a>
+                    <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">Ofertas</a>
+                </div>
+
+                <!-- Carrito, Perfil y Notificaciones -->
+                <div class="flex items-center space-x-4">
+                    <button class="text-white hover:text-gray-300 relative">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        <span class="absolute -top-1 -right-1 bg-white text-black text-[10px] font-bold px-1.5 py-0.5 rounded-full">3</span>
+                    </button>
+                    
+                    <div class="flex items-center space-x-2 cursor-pointer border-l border-gray-700 pl-4 ml-2">
+                        <div class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center text-xs font-bold border border-gray-600">
+                            L
+                        </div>
+                        <span class="text-sm font-medium hidden sm:block hover:underline">Luis Tello</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+    <!-- ================= FIN NAVBAR ================= -->
+
+    <div class="p-4 md:p-8">
+        <div class="max-w-4xl mx-auto space-y-6">
+
+            <!-- ================= SECCIÓN: CABECERA ================= -->
+            <header class="flex justify-between items-start border-b border-gray-300 pb-4 mb-6">
+                <!-- Título -->
+                <div>
+                    <h2 class="text-2xl font-bold text-black">Historial de Pedidos</h2>
+                    <p class="text-sm text-gray-500 hidden sm:block">Revisa el estado y detalle de tus compras.</p>
+                </div>
+            </header>
+
+            <!-- SECCIÓN: FILTROS -->
+            <section>
+                <!-- Controles apilados en móvil, en fila en PC -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                    <select class="border border-gray-400 bg-white px-4 py-2 rounded-md text-sm focus:outline-none focus:border-black">
+                        <option>Últimos 30 días</option>
+                        <option>Últimos 6 meses</option>
+                        <option>Año 2026</option>
+                    </select>
+                    <select class="border border-gray-400 bg-white px-4 py-2 rounded-md text-sm focus:outline-none focus:border-black">
+                        <option>Todos los estados</option>
+                        <option>En camino</option>
+                        <option>Entregados</option>
+                        <option>Cancelados</option>
+                    </select>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: LISTA DE PEDIDOS -->
+            <section class="space-y-4">
+
+                <!-- Tarjeta 1: Pedido En Camino -->
+                <div class="bg-white border border-gray-300 rounded-lg p-5 shadow-sm flex flex-col gap-4">
+                    <!-- Info ID y Estado -->
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-gray-100 pb-3 gap-2">
+                        <div>
+                            <h3 class="font-bold text-black text-sm">Pedido #PE-104958</h3>
+                            <p class="text-xs text-gray-500">Realizado el 15 de Mayo, 2026</p>
+                        </div>
+                        <div class="self-start sm:self-auto px-2 py-1 bg-white border border-black text-[10px] font-bold text-black rounded uppercase tracking-wider">
+                            EN CAMINO
+                        </div>
+                    </div>
+
+                    <!-- Detalles Rápidos del Pedido -->
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 rounded border border-gray-200 flex-shrink-0 overflow-hidden bg-white flex items-center justify-center p-1">
+                            <img src="https://assets.adidas.com/images/w_1880,f_auto,q_auto/15c2bbdb6f584f0d99543d401a7c97be_9366/IE1768_04_standard.jpg" alt="Adidas Ultraboost Light" class="w-full h-full object-contain">
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm font-bold text-black leading-tight">Adidas Ultraboost Light</p>
+                            <p class="text-xs text-gray-500 mt-1">Talla 42 • Color: Blanco/Rojo</p>
+                            <p class="text-xs font-medium text-gray-700 mt-1">1 artículo</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm font-bold text-black">S/ 649.90</p>
+                        </div>
+                    </div>
+
+                    <!-- Botones de Acción (Apilados en móvil) -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2 pt-4 border-t border-gray-100">
+                        <button class="w-full bg-black text-white py-2 rounded text-xs font-bold hover:bg-gray-800 transition flex items-center justify-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+                            Rastrear Pedido
+                        </button>
+                        <button class="w-full border border-gray-400 text-gray-700 py-2 rounded text-xs font-bold hover:bg-gray-50 transition flex items-center justify-center">
+                            Ver Detalles
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2: Pedido Entregado -->
+                <div class="bg-white border border-gray-300 rounded-lg p-5 shadow-sm flex flex-col gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-gray-100 pb-3 gap-2">
+                        <div>
+                            <h3 class="font-bold text-black text-sm">Pedido #PE-098234</h3>
+                            <p class="text-xs text-gray-500">Realizado el 02 de Mayo, 2026</p>
+                        </div>
+                        <div class="self-start sm:self-auto px-2 py-1 bg-black text-white border border-black text-[10px] font-bold rounded uppercase tracking-wider">
+                            ENTREGADO
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 wireframe-img rounded border border-gray-200 flex-shrink-0"></div>
+                        <div class="flex-1">
+                            <p class="text-sm font-bold text-black leading-tight">Adidas Samba OG <span class="text-xs font-normal text-gray-500">+ 1 artículo más</span></p>
+                            <p class="text-xs text-green-600 font-medium mt-1">Entregado el 05 de Mayo, 2026</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm font-bold text-black">S/ 589.80</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2 pt-4 border-t border-gray-100">
+                        <button class="w-full bg-white border border-black text-black py-2 rounded text-xs font-bold hover:bg-gray-50 transition flex items-center justify-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                            Volver a comprar
+                        </button>
+                        <button class="w-full border border-gray-400 text-gray-700 py-2 rounded text-xs font-bold hover:bg-gray-50 transition flex items-center justify-center">
+                            Ver Detalles
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3: Pedido Cancelado -->
+                <div class="bg-gray-50 border border-gray-200 rounded-lg p-5 shadow-sm flex flex-col gap-4 opacity-80">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-gray-200 pb-3 gap-2">
+                        <div>
+                            <h3 class="font-bold text-gray-500 text-sm">Pedido #PE-081122</h3>
+                            <p class="text-xs text-gray-400">Realizado el 15 de Abril, 2026</p>
+                        </div>
+                        <div class="self-start sm:self-auto px-2 py-1 bg-gray-200 text-gray-500 border border-gray-300 text-[10px] font-bold rounded uppercase tracking-wider">
+                            CANCELADO
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 wireframe-img rounded border border-gray-300 flex-shrink-0"></div>
+                        <div class="flex-1">
+                            <p class="text-sm font-bold text-gray-600 leading-tight">Grand Court Alpha</p>
+                            <p class="text-xs text-gray-400 mt-1">Talla 38 • Color: Blanco</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm font-bold text-gray-500">S/ 249.90</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-2 pt-4 border-t border-gray-200 flex justify-end">
+                        <button class="text-xs font-bold text-gray-500 hover:text-black transition flex items-center">
+                            Ver Detalles del Reembolso
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Paginación -->
+            <div class="bg-gray-50 border border-gray-300 rounded-lg p-4 flex flex-col items-center justify-center space-y-3">
+                <span class="text-sm text-gray-500">Mostrando 3 de 12 pedidos</span>
+                <div class="flex space-x-2">
+                    <button class="px-4 py-2 border border-gray-300 bg-white rounded text-sm text-gray-400 cursor-not-allowed">Anterior</button>
+                    <button class="px-4 py-2 border border-gray-300 bg-white rounded text-sm text-black hover:bg-gray-100">Siguiente</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

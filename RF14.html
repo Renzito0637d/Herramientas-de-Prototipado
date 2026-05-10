@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RF14 - Gestión de Reseñas y Calificaciones</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+    
+    <!-- ================= NAVBAR ================= -->
+    <nav class="bg-black text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                
+                <!-- Hamburguesa (Móvil) & Logo -->
+                <div class="flex items-center">
+                    <button class="text-white hover:text-gray-300 md:hidden mr-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="font-bold text-xl tracking-widest">ADIDAS<span class="text-gray-400 text-sm tracking-normal ml-2 hidden sm:inline">| Admin</span></span>
+                    </div>
+                </div>
+
+                <!-- Enlaces de Navegación PC -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">Inicio</a>
+                    <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">Productos</a>
+                    <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">Pedidos</a>
+                    <a href="#" class="text-white border-b-2 border-white px-3 py-2 text-sm font-medium">Reseñas</a>
+                </div>
+
+                <!-- Perfil y Notificaciones -->
+                <div class="flex items-center space-x-4">
+                    <button class="text-white hover:text-gray-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+    <!-- ================= FIN NAVBAR ================= -->
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="p-4 md:p-8">
+        <div class="max-w-5xl mx-auto space-y-6">
+
+            <!-- SECCIÓN: CABECERA Y FILTROS -->
+            <section>
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-black">Gestión de Reseñas</h2>
+                        <p class="text-sm text-gray-500">Modera las valoraciones y comentarios de los clientes.</p>
+                    </div>
+                    
+                    <!-- Controles apilados en móvil, en fila en PC -->
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                        <select class="border border-gray-400 bg-white px-4 py-2 rounded-md text-sm focus:outline-none focus:border-black">
+                            <option>Estado: Pendientes</option>
+                            <option>Estado: Aprobados</option>
+                            <option>Estado: Rechazados</option>
+                            <option>Todos los estados</option>
+                        </select>
+                        <input type="text" placeholder="Buscar producto o cliente..."
+                            class="border border-gray-400 bg-white px-4 py-2 rounded-md text-sm w-full sm:w-64 focus:outline-none focus:border-black focus:ring-1 focus:ring-black">
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: LISTA DE RESEÑAS (Formato Tarjetas para Móvil) -->
+            <section class="space-y-4">
+
+                <!-- Tarjeta 1: Reseña Pendiente -->
+                <div class="bg-white border border-gray-300 rounded-lg p-5 shadow-sm flex flex-col gap-4">
+                    <!-- Info Usuario y Estado -->
+                    <div class="flex justify-between items-start border-b border-gray-100 pb-3">
+                        <div>
+                            <h3 class="font-bold text-black text-sm">Carlos Mendoza</h3>
+                            <p class="text-xs text-gray-500">Hace 2 hours • Cliente Verificado</p>
+                        </div>
+                        <span class="px-2 py-1 bg-white border border-black text-[10px] font-bold text-black rounded uppercase tracking-wider">
+                            PENDIENTE
+                        </span>
+                    </div>
+
+                    <!-- Calificación y Producto -->
+                    <div>
+                        <div class="flex items-center mb-2 text-black">
+                            <!-- Estrellas (5/5) -->
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        </div>
+                        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Producto</p>
+                        <p class="text-sm font-medium text-black mb-3">Adidas Samba OG (ID: #1042)</p>
+                        
+                        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Comentario</p>
+                        <p class="text-sm text-gray-700 italic border-l-2 border-gray-300 pl-3">"Excelente producto, llegaron muy rápido y la talla es perfecta. Totalmente recomendadas para el uso diario."</p>
+                    </div>
+
+                    <!-- Botones de Acción (Ancho completo en móvil) -->
+                    <div class="grid grid-cols-2 gap-3 mt-2 pt-4 border-t border-gray-100">
+                        <button class="w-full border border-gray-400 text-gray-700 py-2 rounded text-xs font-bold hover:bg-gray-50 transition flex items-center justify-center">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            Rechazar
+                        </button>
+                        <button class="w-full bg-black text-white py-2 rounded text-xs font-bold hover:bg-gray-800 transition flex items-center justify-center">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Aprobar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2: Reseña Aprobada -->
+                <div class="bg-white border border-gray-300 rounded-lg p-5 shadow-sm flex flex-col gap-4">
+                    <div class="flex justify-between items-start border-b border-gray-100 pb-3">
+                        <div>
+                            <h3 class="font-bold text-black text-sm">María Fernández</h3>
+                            <p class="text-xs text-gray-500">10/05/2026 • Cliente Verificado</p>
+                        </div>
+                        <span class="px-2 py-1 bg-black border border-black text-[10px] font-bold text-white rounded uppercase tracking-wider">
+                            APROBADO
+                        </span>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center mb-2 text-black">
+                            <!-- Estrellas (4/5) -->
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 text-gray-300 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        </div>
+                        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Producto</p>
+                        <p class="text-sm font-medium text-black mb-3">Ultraboost Light (ID: #1043)</p>
+                        
+                        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Comentario</p>
+                        <p class="text-sm text-gray-700 italic border-l-2 border-gray-300 pl-3">"Son buenas para correr, pero el color en la foto se veía ligeramente distinto. Igual estoy satisfecha."</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 mt-2 pt-4 border-t border-gray-100">
+                        <button class="w-full bg-gray-100 border border-gray-300 text-black py-2 rounded text-xs font-bold hover:bg-gray-200 transition flex items-center justify-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path></svg>
+                            Responder al cliente
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3: Reseña Rechazada -->
+                <div class="bg-gray-50 border border-gray-200 rounded-lg p-5 shadow-sm flex flex-col gap-4">
+                    <div class="flex justify-between items-start border-b border-gray-200 pb-3">
+                        <div>
+                            <h3 class="font-bold text-gray-500 text-sm">Usuario Anónimo</h3>
+                            <p class="text-xs text-gray-400">08/05/2026</p>
+                        </div>
+                        <span class="px-2 py-1 bg-gray-200 border border-gray-300 text-[10px] font-bold text-gray-500 rounded uppercase tracking-wider">
+                            RECHAZADO
+                        </span>
+                    </div>
+
+                    <div class="opacity-70">
+                        <div class="flex items-center mb-2 text-black">
+                            <!-- Estrellas (1/5) -->
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 text-gray-300 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 text-gray-300 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 text-gray-300 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 text-gray-300 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        </div>
+                        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Producto</p>
+                        <p class="text-sm font-medium text-gray-600 mb-3">Grand Court Alpha (ID: #1044)</p>
+                        
+                        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Comentario</p>
+                        <p class="text-sm text-gray-500 italic border-l-2 border-gray-300 pl-3">[Comentario oculto por infringir políticas de lenguaje ofensivo]</p>
+                    </div>
+                    
+                    <div class="mt-2 pt-4 border-t border-gray-200 flex justify-end">
+                        <button class="text-xs font-bold text-gray-500 hover:text-black transition flex items-center">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                            Eliminar permanentemente
+                        </button>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Paginación -->
+            <div class="bg-gray-50 border border-gray-300 rounded-lg p-4 flex flex-col items-center justify-center space-y-3">
+                <span class="text-sm text-gray-500">Mostrando 3 de 15 reseñas pendientes</span>
+                <div class="flex space-x-2">
+                    <button class="px-4 py-2 border border-gray-300 bg-white rounded text-sm text-gray-400 cursor-not-allowed">Anterior</button>
+                    <button class="px-4 py-2 border border-gray-300 bg-white rounded text-sm text-black hover:bg-gray-100">Siguiente</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
