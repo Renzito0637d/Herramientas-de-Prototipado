@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RF13 - Pasarela de Pago (Checkout Móvil)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 pb-24">
+
+    <header class="bg-white border-b border-gray-200 p-4 flex items-center justify-between sticky top-0 z-50">
+        <button class="text-gray-500 hover:text-black flex items-center">
+            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            <span class="text-sm font-medium">Volver</span>
+        </button>
+        <div class="font-bold text-lg tracking-widest text-black">
+            ADIDAS
+        </div>
+        <div class="w-16"></div> </header>
+
+    <div class="px-2 space-y-2 max-w-lg mx-auto">
+
+        <div class="flex items-center justify-between relative px-2 mb-2">
+            <div class="absolute left-0 top-1/2 transform -translate-y-1/2 w-full h-1 bg-gray-200 -z-10"></div>
+            <div class="absolute left-0 top-1/2 transform -translate-y-1/2 w-full h-1 bg-black -z-10"></div> <div class="flex flex-col items-center">
+                <div class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center border-4 border-gray-50">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                </div>
+                <span class="text-[10px] font-bold mt-1 text-black">ENVÍO</span>
+            </div>
+            
+            <div class="flex flex-col items-center">
+                <div class="w-8 h-8 rounded-full bg-black text-white font-bold text-sm flex items-center justify-center border-4 border-gray-50">2</div>
+                <span class="text-[10px] font-bold mt-1 text-black">PAGO</span>
+            </div>
+            
+            <div class="flex flex-col items-center">
+                <div class="w-8 h-8 rounded-full bg-white text-gray-400 font-bold text-sm flex items-center justify-center border-2 border-gray-300">3</div>
+                <span class="text-[10px] font-bold mt-1 text-gray-400">RESUMEN</span>
+            </div>
+        </div>
+
+        <h2 class="text-xl font-bold text-black ">Método de Pago</h2>
+
+        <div class="space-y-2">
+
+            <div class="bg-white border-2 border-black rounded-lg shadow-sm overflow-hidden">
+                <label class="flex items-center p-2 cursor-pointer border-b border-gray-200 bg-gray-50">
+                    <div class="flex items-center h-5">
+                        <input type="radio" name="payment" class="h-5 w-5 text-black border-gray-300 focus:ring-black" checked>
+                    </div>
+                    <div class="ml-3 flex-1 flex justify-between items-center">
+                        <span class="font-bold text-sm text-black">Tarjeta de Crédito / Débito</span>
+                        <div class="flex space-x-1">
+                            <div class="w-8 h-5 bg-gray-300 rounded text-[8px] font-bold flex items-center justify-center italic">VISA</div>
+                            <div class="w-8 h-5 bg-gray-300 rounded text-[8px] font-bold flex items-center justify-center italic">MC</div>
+                        </div>
+                    </div>
+                </label>
+                
+                <div class="p-2 space-y-1">
+                    <div class="border border-gray-300 rounded p-3 flex justify-between items-center bg-white cursor-pointer hover:border-black">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-5 bg-gray-200 rounded text-[8px] font-bold flex items-center justify-center italic">VISA</div>
+                            <div>
+                                <p class="font-mono text-sm tracking-wider text-black font-medium">**** 4582</p>
+                            </div>
+                        </div>
+                        <input type="radio" name="saved_card" checked class="h-4 w-4 text-black focus:ring-black">
+                    </div>
+
+                    <div class="relative flex items-center ">
+                        <div class="flex-grow border-t border-gray-200"></div>
+                        <span class="flex-shrink-0 mx-4 text-gray-400 text-xs">O usar una nueva</span>
+                        <div class="flex-grow border-t border-gray-200"></div>
+                    </div>
+
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-wide mb-1">Número de Tarjeta</label>
+                        <div class="relative">
+                            <input type="text" placeholder="0000 0000 0000 0000" class="w-full border border-gray-400 bg-white px-3 py-2.5 rounded text-sm focus:outline-none focus:border-black font-mono">
+                            <svg class="w-5 h-5 absolute right-3 top-2.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-wide mb-1">Vencimiento</label>
+                            <input type="text" placeholder="MM/AA" class="w-full border border-gray-400 bg-white px-3 py-2.5 rounded text-sm focus:outline-none focus:border-black font-mono">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-wide mb-1">CVC/CVV</label>
+                            <input type="password" placeholder="123" class="w-full border border-gray-400 bg-white px-3 py-2.5 rounded text-sm focus:outline-none focus:border-black font-mono">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-wide mb-1">Nombre en la tarjeta</label>
+                        <input type="text" placeholder="Ej. Renzo Gutierrez" class="w-full border border-gray-400 bg-white px-3 py-2.5 rounded text-sm focus:outline-none focus:border-black">
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
+                <label class="flex items-center p-4 cursor-pointer hover:bg-gray-50 rounded-lg transition">
+                    <div class="flex items-center h-5">
+                        <input type="radio" name="payment" class="h-5 w-5 text-black border-gray-300 focus:ring-black">
+                    </div>
+                    <div class="ml-3 flex-1 flex justify-between items-center">
+                        <span class="font-bold text-sm text-black">Yape / Plin</span>
+                        <div class="flex space-x-1">
+                            <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-[8px] font-bold border border-gray-300">YP</div>
+                            <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-[8px] font-bold border border-gray-300">PL</div>
+                        </div>
+                    </div>
+                </label>
+            </div>
+
+            <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
+                <label class="flex items-center p-4 cursor-pointer hover:bg-gray-50 rounded-lg transition">
+                    <div class="flex items-center h-5">
+                        <input type="radio" name="payment" class="h-5 w-5 text-black border-gray-300 focus:ring-black">
+                    </div>
+                    <div class="ml-3 flex-1 flex justify-between items-center">
+                        <div>
+                            <span class="block font-bold text-sm text-black">PagoEfectivo</span>
+                            <span class="block text-[10px] text-gray-500 mt-0.5">Banca por internet o agencias</span>
+                        </div>
+                        <div class="w-10 h-6 bg-gray-200 rounded flex items-center justify-center text-[8px] font-bold border border-gray-300">PE</div>
+                    </div>
+                </label>
+            </div>
+
+        </div>
+
+        <div class="mt-6">
+            <h3 class="text-sm font-bold text-black mb-3">Dirección de Facturación</h3>
+            <label class="flex items-start cursor-pointer">
+                <div class="flex items-center h-5">
+                    <input type="checkbox" class="h-5 w-5 text-black border-gray-400 rounded focus:ring-black" checked>
+                </div>
+                <div class="ml-3 text-sm text-gray-700">
+                    Mi dirección de facturación es la misma que la de envío.
+                </div>
+            </label>
+        </div>
+
+    </div>
+
+    <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 p-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-50">
+        <div class="max-w-lg mx-auto">
+            <div class="flex justify-between items-center mb-3">
+                <div class="flex flex-col">
+                    <span class="text-xs text-gray-500 font-medium">Total a pagar</span>
+                    <span class="text-xl font-bold text-black">S/ 1,014.80</span>
+                </div>
+                <button class="text-xs font-bold text-black flex items-center">
+                    Ver detalle
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+                </button>
+            </div>
+            
+            <button class="w-full bg-black text-white py-3.5 rounded-lg text-sm font-bold flex justify-center items-center hover:bg-gray-800 transition shadow-md">
+                Confirmar y Pagar
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>

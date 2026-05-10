@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RF11 - Proceso de Pago (Checkout Móvil)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 pb-24">
+
+    <header class="bg-white border-b border-gray-200 p-4 flex items-center justify-between sticky top-0 z-50">
+        <button class="text-gray-500 hover:text-black flex items-center">
+            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            <span class="text-sm font-medium">Volver</span>
+        </button>
+        <div class="font-bold text-lg tracking-widest text-black">
+            ADIDAS
+        </div>
+        <div class="w-16"></div> </header>
+
+    <div class="p-4 space-y-6 max-w-lg mx-auto">
+
+        <div class="flex items-center justify-between relative px-2">
+            <div class="absolute left-0 top-1/2 transform -translate-y-1/2 w-full h-1 bg-gray-200 -z-10"></div>
+            <div class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1/2 h-1 bg-black -z-10"></div> <div class="flex flex-col items-center">
+                <div class="w-8 h-8 rounded-full bg-black text-white font-bold text-sm flex items-center justify-center border-4 border-gray-50">1</div>
+                <span class="text-[10px] font-bold mt-1 text-black">ENVÍO</span>
+            </div>
+            
+            <div class="flex flex-col items-center">
+                <div class="w-8 h-8 rounded-full bg-white text-gray-400 font-bold text-sm flex items-center justify-center border-2 border-gray-300">2</div>
+                <span class="text-[10px] font-bold mt-1 text-gray-400">PAGO</span>
+            </div>
+            
+            <div class="flex flex-col items-center">
+                <div class="w-8 h-8 rounded-full bg-white text-gray-400 font-bold text-sm flex items-center justify-center border-2 border-gray-300">3</div>
+                <span class="text-[10px] font-bold mt-1 text-gray-400">RESUMEN</span>
+            </div>
+        </div>
+
+        <section>
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="text-lg font-bold text-black">Dirección de Entrega</h2>
+            </div>
+
+            <label class="block bg-white border-2 border-black rounded-lg p-4 mb-3 relative cursor-pointer shadow-sm">
+                <input type="radio" name="address" class="absolute top-4 right-4 h-5 w-5 text-black border-gray-300 focus:ring-black" checked>
+                <div class="pr-8">
+                    <div class="flex items-center space-x-2 mb-1">
+                        <span class="font-bold text-sm text-black">Casa</span>
+                        <span class="bg-gray-100 text-gray-600 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Predeterminada</span>
+                    </div>
+                    <p class="text-sm text-black mb-1">Renzo Gutierrez</p>
+                    <p class="text-xs text-gray-500 leading-relaxed">Av. Universitaria 1234, Dpto 301<br>San Martín de Porres, Lima<br>Tel: 951823847</p>
+                </div>
+            </label>
+
+            <button class="w-full border border-gray-300 bg-white text-black py-3 rounded-lg text-sm font-bold hover:bg-gray-50 transition flex justify-center items-center">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                Agregar nueva dirección
+            </button>
+        </section>
+
+        <section>
+            <h2 class="text-lg font-bold text-black mb-3">Método de Envío</h2>
+            
+            <div class="space-y-3">
+                <label class="flex items-start bg-white border border-gray-300 rounded-lg p-4 cursor-pointer hover:border-gray-400 transition shadow-sm">
+                    <div class="flex items-center h-5">
+                        <input type="radio" name="shipping" class="h-5 w-5 text-black border-gray-300 focus:ring-black" checked>
+                    </div>
+                    <div class="ml-3 flex-1">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="font-bold text-sm text-black">Envío Estándar</span>
+                            <span class="font-bold text-sm text-black">S/ 15.00</span>
+                        </div>
+                        <p class="text-xs text-gray-500">Entrega estimada: 13 May - 15 May</p>
+                    </div>
+                </label>
+
+                <label class="flex items-start bg-white border border-gray-300 rounded-lg p-4 cursor-pointer hover:border-gray-400 transition shadow-sm">
+                    <div class="flex items-center h-5">
+                        <input type="radio" name="shipping" class="h-5 w-5 text-black border-gray-300 focus:ring-black">
+                    </div>
+                    <div class="ml-3 flex-1">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="font-bold text-sm text-black flex items-center">
+                                Envío Express
+                                <svg class="w-4 h-4 ml-1 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            </span>
+                            <span class="font-bold text-sm text-black">S/ 25.00</span>
+                        </div>
+                        <p class="text-xs text-gray-500">Recíbelo hoy mismo (Solo Lima Metropolitana)</p>
+                    </div>
+                </label>
+
+                <label class="flex items-start bg-white border border-gray-300 rounded-lg p-4 cursor-pointer hover:border-gray-400 transition shadow-sm">
+                    <div class="flex items-center h-5">
+                        <input type="radio" name="shipping" class="h-5 w-5 text-black border-gray-300 focus:ring-black">
+                    </div>
+                    <div class="ml-3 flex-1">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="font-bold text-sm text-black">Recojo en Tienda</span>
+                            <span class="font-bold text-sm text-green-600">GRATIS</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-2">Selecciona una tienda Adidas cercana.</p>
+                        <button class="text-xs font-bold text-black border-b border-black pb-0.5 disabled:opacity-50">Elegir tienda</button>
+                    </div>
+                </label>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 p-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-50">
+        <div class="max-w-lg mx-auto">
+            <div class="flex justify-between items-center mb-3">
+                <div class="flex flex-col">
+                    <span class="text-xs text-gray-500 font-medium">Total a pagar (2 artículos)</span>
+                    <span class="text-xl font-bold text-black">S/ 999.80</span>
+                </div>
+                <button class="text-xs font-bold text-black flex items-center">
+                    Ver detalle
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+                </button>
+            </div>
+            
+            <button class="w-full bg-black text-white py-3.5 rounded-lg text-sm font-bold flex justify-center items-center hover:bg-gray-800 transition shadow-md">
+                Continuar al Pago
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>
